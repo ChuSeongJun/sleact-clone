@@ -5,8 +5,8 @@ import useInput from '@hooks/useInput';
 const SignUp = () => {
   const [email, onChangeEmail] = useInput('');
   const [nickname, onChangeNickname] = useInput('');
-  const [password, setPassword] = useInput('');
-  const [passwordCheck, setPasswordCheck] = useInput('');
+  const [password, , setPassword] = useInput('');
+  const [passwordCheck, , setPasswordCheck] = useInput('');
   const [mismatchError, setMismatchError] = useState(false);
 
   const onChangePassword = useCallback(
@@ -14,13 +14,16 @@ const SignUp = () => {
       setPassword(e.target.value);
       setMismatchError(e.target.value !== passwordCheck);
     },
-    [password],
+    [passwordCheck],
   );
 
-  const onChangePasswordCheck = useCallback((e) => {
-    setPasswordCheck(e.target.value);
-    setMismatchError(e.target.value !== password);
-  }, []);
+  const onChangePasswordCheck = useCallback(
+    (e) => {
+      setPasswordCheck(e.target.value);
+      setMismatchError(e.target.value !== password);
+    },
+    [password],
+  );
 
   const onSubmit = useCallback(
     (e) => {
