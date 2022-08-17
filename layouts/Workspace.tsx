@@ -12,7 +12,7 @@ const Workspace: FC = ({ children }) => {
         withCredentials: true,
       })
       .then(() => {
-        mutate();
+        mutate(false, false);
       });
   }, []);
 
