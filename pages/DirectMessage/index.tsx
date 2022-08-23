@@ -24,6 +24,7 @@ const DirectMessage = () => {
   const onSubmitForm = useCallback(
     (e) => {
       e.preventDefault();
+      console.log(chat);
       if (chat?.trim()) {
         axios
           .post(`/api/workspaces/${workspace}/dms/${id}/chats`, {
